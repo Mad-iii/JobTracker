@@ -1,6 +1,6 @@
-﻿# JobTracker ðŸš€
+﻿# JobTracker
 
-**AI-powered job application tracker** â€” built for the Tynovate Internship 2026, AI + Web Development Track.
+**AI-powered job application tracker**” built for the Tynovate Internship 2026, AI + Web Development Track.
 
 > Track every application, prep for every interview, and let AI write your cover letters.
 
@@ -22,18 +22,18 @@
 
 ## Features
 
-### Minimum Requirements âœ…
+### Minimum Requirements
 - [x] JWT authentication (register, login, logout, session)
 - [x] MongoDB database with designed schemas and indexes
 - [x] Interactive dashboard with live stats
 - [x] Full CRUD for applications, interviews, contacts, skills
-- [x] Responsive UI â€” desktop and mobile
+- [x] Responsive UI ” desktop and mobile
 
 ### Advanced Features (in progress)
-- [ ] **AI Integration** â€” Resume review, cover letter generation, match scoring (Week 5)
-- [ ] **Notification System** â€” Email follow-up reminders and interview alerts (Week 6)
-- [ ] **Analytics Module** â€” Application trends, response rates, source benchmarks (Week 6)
-- [ ] **Recommendation System** â€” Job role recommendations based on profile (Week 7)
+- [ ] **AI Integration** ” Resume review, cover letter generation, match scoring (Week 5)
+- [ ] **Notification System** ” Email follow-up reminders and interview alerts (Week 6)
+- [ ] **Analytics Module** ” Application trends, response rates, source benchmarks (Week 6)
+- [ ] **Recommendation System** ” Job role recommendations based on profile (Week 7)
 
 ---
 
@@ -143,4 +143,4 @@ jobtracker/
 
 ## Author
 
-Built by [Your Name] as part of the Tynovate Internship Program 2026.
+Built by Mahd Sadiq as part of the Tynovate Internship Program 2026.
