@@ -117,11 +117,11 @@ Full API documentation: see `ARCHITECTURE.md`
 
 ```
 jobtracker/
-â”œâ”€â”€ client/          # React 18 frontend
-â”œâ”€â”€ server/          # Express.js API
-â”œâ”€â”€ ARCHITECTURE.md  # System design doc + ERD
-â”œâ”€â”€ docker-compose.yml
-â””â”€â”€ README.md
+client/          # React 18 frontend
+server/          # Express.js API
+ARCHITECTURE.md  # System design doc + ERD
+docker-compose.yml
+README.md
 ```
 
 ---
@@ -130,7 +130,7 @@ jobtracker/
 
 | Week | Focus |
 |---|---|
-| 1 | âœ… Setup, architecture, project skeleton |
+| 1 | Setup, architecture, project skeleton |
 | 2 | Auth system + database schemas |
 | 3 | Core REST APIs + CRUD |
 | 4 | Dashboard + responsive frontend |
