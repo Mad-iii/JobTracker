@@ -1,0 +1,7 @@
+[
+  { "userEmail": "alex.test@jobtrakr.dev", "applicationRef": "alex-1", "round": "Technical Round 1", "type": "Video", "scheduledAt": "2026-07-18T15:00:00Z", "interviewer": "Jamie Chen", "interviewerRole": "Senior Frontend Engineer", "status": "Scheduled" },
+  { "userEmail": "alex.test@jobtrakr.dev", "applicationRef": "alex-3", "round": "Recruiter Screen", "type": "Phone", "scheduledAt": "2026-06-15T18:00:00Z", "interviewer": "Morgan Lee", "interviewerRole": "Technical Recruiter", "status": "Completed", "outcome": "Passed", "selfRating": 4 },
+  { "userEmail": "alex.test@jobtrakr.dev", "applicationRef": "alex-6", "round": "Final Interview", "type": "On-site", "scheduledAt": "2026-04-02T14:00:00Z", "interviewer": "Sam Okafor", "interviewerRole": "Engineering Manager", "status": "Completed", "outcome": "Passed", "selfRating": 5 },
+  { "userEmail": "priya.test@jobtrakr.dev", "applicationRef": "priya-1", "round": "Technical Round 1", "type": "Video", "scheduledAt": "2026-07-20T16:00:00Z", "interviewer": "Dana White", "interviewerRole": "Staff Engineer", "status": "Scheduled" },
+  { "userEmail": "priya.test@jobtrakr.dev", "applicationRef": "priya-3", "round": "Final Interview", "type": "On-site", "scheduledAt": "2026-08-05T13:00:00Z", "interviewer": "Chris Bauer", "interviewerRole": "Director of Engineering", "status": "Scheduled" }
+]

@@ -1,4 +1,7 @@
-﻿const express = require("express");
+﻿const dns = require("dns");
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
+const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");

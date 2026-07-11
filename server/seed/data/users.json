@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Alex Rivera",
+    "email": "alex.test@jobtrakr.dev",
+    "password": "TestPass123!",
+    "jobTitle": "Frontend Developer",
+    "location": "Austin, TX",
+    "targetRole": "Senior Frontend Engineer",
+    "targetSalary": { "min": 95000, "max": 130000 }
+  },
+  {
+    "name": "Priya Nair",
+    "email": "priya.test@jobtrakr.dev",
+    "password": "TestPass123!",
+    "jobTitle": "Backend Developer",
+    "location": "Remote",
+    "targetRole": "Backend / Platform Engineer",
+    "targetSalary": { "min": 100000, "max": 140000 }
+  }
+]
