@@ -1,38 +1,47 @@
 const express = require("express");
+const { body } = require("express-validator");
 const router = express.Router();
+const {
+  getSkills,
+  getSkill,
+  createSkill,
+  updateSkill,
+  deleteSkill,
+} = require("../controllers/skill.controller");
 const { protect } = require("../middleware/auth.middleware");
-const Skill = require("../models/Skill");
 
 router.use(protect);
 
-router.get("/", async (req, res, next) => {
-  try {
-    const skills = await Skill.find({ user: req.user._id }).sort("category name");
-    res.json({ success: true, data: skills });
-  } catch (err) { next(err); }
-});
+const createValidators = [
+  body("name").trim().notEmpty().withMessage("Skill name is required"),
+  body("category")
+    .optional()
+    .isIn(["Technical", "Language", "Framework", "Tool", "Soft Skill", "Other"])
+    .withMessage("Invalid category"),
+  body("proficiency")
+    .optional()
+    .isIn(["Beginner", "Intermediate", "Advanced", "Expert"])
+    .withMessage("Invalid proficiency level"),
+  body("yearsOfExperience").optional().isFloat({ min: 0 }).withMessage("yearsOfExperience must be 0 or greater"),
+];
 
-router.post("/", async (req, res, next) => {
-  try {
-    const skill = await Skill.create({ ...req.body, user: req.user._id });
-    res.status(201).json({ success: true, data: skill });
-  } catch (err) { next(err); }
-});
+const updateValidators = [
+  body("name").optional().trim().notEmpty().withMessage("Skill name cannot be empty"),
+  body("category")
+    .optional()
+    .isIn(["Technical", "Language", "Framework", "Tool", "Soft Skill", "Other"])
+    .withMessage("Invalid category"),
+  body("proficiency")
+    .optional()
+    .isIn(["Beginner", "Intermediate", "Advanced", "Expert"])
+    .withMessage("Invalid proficiency level"),
+  body("yearsOfExperience").optional().isFloat({ min: 0 }).withMessage("yearsOfExperience must be 0 or greater"),
+];
 
-router.put("/:id", async (req, res, next) => {
-  try {
-    const skill = await Skill.findOneAndUpdate({ _id: req.params.id, user: req.user._id }, req.body, { new: true });
-    if (!skill) return res.status(404).json({ success: false, message: "Skill not found." });
-    res.json({ success: true, data: skill });
-  } catch (err) { next(err); }
-});
-
-router.delete("/:id", async (req, res, next) => {
-  try {
-    const skill = await Skill.findOneAndDelete({ _id: req.params.id, user: req.user._id });
-    if (!skill) return res.status(404).json({ success: false, message: "Skill not found." });
-    res.json({ success: true, message: "Skill deleted." });
-  } catch (err) { next(err); }
-});
+router.get("/", getSkills);
+router.get("/:id", getSkill);
+router.post("/", createValidators, createSkill);
+router.put("/:id", updateValidators, updateSkill);
+router.delete("/:id", deleteSkill);
 
 module.exports = router;

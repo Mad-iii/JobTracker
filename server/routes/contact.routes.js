@@ -1,38 +1,39 @@
 const express = require("express");
+const { body } = require("express-validator");
 const router = express.Router();
+const {
+  getContacts,
+  getContact,
+  createContact,
+  updateContact,
+  deleteContact,
+} = require("../controllers/contact.controller");
 const { protect } = require("../middleware/auth.middleware");
-const Contact = require("../models/Contact");
 
 router.use(protect);
 
-router.get("/", async (req, res, next) => {
-  try {
-    const contacts = await Contact.find({ user: req.user._id }).sort("-createdAt");
-    res.json({ success: true, data: contacts });
-  } catch (err) { next(err); }
-});
+const createValidators = [
+  body("name").trim().notEmpty().withMessage("Contact name is required"),
+  body("email").optional({ checkFalsy: true }).isEmail().withMessage("Must be a valid email"),
+  body("relationship")
+    .optional()
+    .isIn(["Recruiter", "Hiring Manager", "Referral", "Colleague", "Mentor", "Other"])
+    .withMessage("Invalid relationship type"),
+];
 
-router.post("/", async (req, res, next) => {
-  try {
-    const contact = await Contact.create({ ...req.body, user: req.user._id });
-    res.status(201).json({ success: true, data: contact });
-  } catch (err) { next(err); }
-});
+const updateValidators = [
+  body("name").optional().trim().notEmpty().withMessage("Contact name cannot be empty"),
+  body("email").optional({ checkFalsy: true }).isEmail().withMessage("Must be a valid email"),
+  body("relationship")
+    .optional()
+    .isIn(["Recruiter", "Hiring Manager", "Referral", "Colleague", "Mentor", "Other"])
+    .withMessage("Invalid relationship type"),
+];
 
-router.put("/:id", async (req, res, next) => {
-  try {
-    const contact = await Contact.findOneAndUpdate({ _id: req.params.id, user: req.user._id }, req.body, { new: true });
-    if (!contact) return res.status(404).json({ success: false, message: "Contact not found." });
-    res.json({ success: true, data: contact });
-  } catch (err) { next(err); }
-});
-
-router.delete("/:id", async (req, res, next) => {
-  try {
-    const contact = await Contact.findOneAndDelete({ _id: req.params.id, user: req.user._id });
-    if (!contact) return res.status(404).json({ success: false, message: "Contact not found." });
-    res.json({ success: true, message: "Contact deleted." });
-  } catch (err) { next(err); }
-});
+router.get("/", getContacts);
+router.get("/:id", getContact);
+router.post("/", createValidators, createContact);
+router.put("/:id", updateValidators, updateContact);
+router.delete("/:id", deleteContact);
 
 module.exports = router;

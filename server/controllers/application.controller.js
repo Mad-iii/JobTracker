@@ -115,6 +115,10 @@ exports.createApplication = async (req, res, next) => {
 // PUT /api/applications/:id
 exports.updateApplication = async (req, res, next) => {
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ success: false, errors: errors.array() });
+    }
     const application = await Application.findOneAndUpdate(
       { _id: req.params.id, user: req.user._id },
       req.body,
